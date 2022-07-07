@@ -35,7 +35,7 @@ class BlazeAPI(Browser):
                                           f"{URL_API}/api/roulette_games/recent",
                                           headers=self.headers)
         if self.response:
-            result = {"items": [{"color": "branco" if i["color"] == 0 else "vermelho" if i["color"] == 1 else "verde",
+            result = {"items": [{"color": "branco" if i["color"] == 0 else "vermelho" if i["color"] == 1 else "preto",
                                  "value": i["roll"]} for i in self.response.json()]}
             return json.dumps(result, indent=4)
         return False
@@ -56,6 +56,6 @@ if __name__ == '__main__':
     last_doubles = ba.get_last_doubles()
     print(last_doubles)
 
-    last_crashs = ba.get_last_crashs()
-    print(last_crashs)
+    # last_crashs = ba.get_last_crashs()
+    # print(last_crashs)
 
